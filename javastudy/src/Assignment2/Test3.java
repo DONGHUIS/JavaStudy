@@ -21,11 +21,11 @@ public class Test3 {
 		int system = systemNumber;
 		
 		if(system==userNumber) {
-			System.out.println(system+"이 컴퓨터이므로 숫자가 같으므로 동점입니다.");
+			System.out.println("본인은"+userNumber+"이고 시스템번호는 "+system+"이(가) 컴퓨터이므로 숫자가 같으므로 동점입니다.");
 		}else if(system > userNumber) {
-			System.out.println(system+"이 컴퓨터이므로 컴퓨터가 이겼습니다.");
+			System.out.println("본인은"+userNumber+"이고 시스템번호는 "+system+"이(가) 컴퓨터이므로 컴퓨터가 이겼습니다.");
 		}else if(system<userNumber) {
-			System.out.println(system+"이 컴퓨터이므로 당신이 이겼습니다.");
+			System.out.println("본인은"+userNumber+"이고 시스템번호는 "+system+"이(가) 컴퓨터이므로 당신이 이겼습니다.");
 		}
 		
 		
