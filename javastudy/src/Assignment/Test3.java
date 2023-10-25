@@ -13,7 +13,7 @@ public class Test3 {
 		System.out.println("본인점수입력:");
 		Scanner scan = new Scanner(System.in);
 		int score = scan.nextInt();
-		System.out.println((score>=90)?"A학점입니다.":(score>=80)?"B학점입니다.":(score>=70)?"C학점입니다.":(score>=60)?"D학점입니다.":"F학점입니다");
+		System.out.println(score + "점은 "+((score>=90)?"A학점입니다.":(score>=80)?"B학점입니다.":(score>=70)?"C학점입니다.":(score>=60)?"D학점입니다.":"F학점입니다"));
 		
 	}
 }

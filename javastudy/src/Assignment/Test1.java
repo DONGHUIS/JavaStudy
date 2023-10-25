@@ -18,7 +18,7 @@ public class Test1 {
 	public static void main(String[] args) {
 		System.out.println("금액을 입력하세요.");
 		Scanner scan = new Scanner(System.in);
-		int total = scan.nextInt();
+		int total = scan.nextInt();//입력금액
 		int remind; //잔액
 		
 		int t500 = total/500;

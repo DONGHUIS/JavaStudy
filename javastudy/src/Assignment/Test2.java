@@ -13,7 +13,6 @@ public class Test2 {
 		 * 24
 		 *  6  :  30 - 24
 		 *  
-		 *  ((apple%10 !=0)? apple/10+1:apple/10);
 		 *  
 		 * 10부터 99사이의 두자리 자연수를 입력하세요
 		 * 20
@@ -22,12 +21,11 @@ public class Test2 {
 		
 		System.out.println("10부터 99사이의 두자리 자연수를 입력하세요.");
 		Scanner scan = new Scanner(System.in);
-		int num1 = scan.nextInt(); //23
-		int num2 = scan.nextInt();
+		int num = scan.nextInt(); 
+		//num%10 ==0:입력된수가 10의 배수인 경우
+		int num10 = (num%10==0)?num:((num/10+1)*10);
 		
-		System.out.println((num1/10==0)? ((num1/10)*10)-num1:(((num1/1)*10)%10)-num1);
+		System.out.println((num10-num)+":"+num10+"-"+num);
 		
-		num1 = (num1/10)*10;
-		System.out.println(num1);
 	}
 }
