@@ -23,23 +23,27 @@ import java.util.Scanner;
 */
 public class Test2 {
 	public static void main(String[] args) {
-		System.out.println("가위바위보중 하나를 선택하여 입력하세요.");
+		System.out.println(" 가위(1), 바위(2), 보(3) 하나를 선택하여 입력하세요.");
 		Scanner scan = new Scanner(System.in);
-		String my = scan.next();
+		int my = scan.nextInt();
 		int com = (int)(Math.random()*3)+1;
 		
-		System.out.print("사용자가 "+my);
-		switch(com) {
-			case 1:System.out.print(" 시스템이 가위를 하여");break;
-			case 2:System.out.print(" 시스템이 바위를 하여");break;
-			case 3:System.out.print(" 시스템이 보를하여");break;
-		
+		if(com==my) {
+			System.out.println("비김");
+		}else if(com<my) {
+			System.out.println("사용자승리!");
+		}else if(com>my) {
+			System.out.println("시스템승리!");
 		}
 		
-		System.out.println(com);
-		
-		
-
+		/*
+		if(com==my) {
+			System.out.println("컴퓨터 : "+com+" 비겼습니다.");
+		}else if(com<my) {
+			System.out.println("컴퓨터 :"+com+" 사용자승리!");
+		}else if(com>my) {
+			System.out.println("컴퓨터 :"+com+" 사용자패배!");
+		}*/
 		
 	}
 }
