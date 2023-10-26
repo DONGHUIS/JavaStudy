@@ -16,7 +16,7 @@ public class Test5 {
 		System.out.println("점수입력:");
 		Scanner scan = new Scanner(System.in);
 		int score = scan.nextInt();
-		
+
 		if(score>=90) {
 			if(95<= score) {
 				System.out.println("A+");

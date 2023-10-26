@@ -31,5 +31,7 @@ public class Test4 {
 		}else {
 			System.out.println("평년");
 		}
+		
+		
 	}
 }

@@ -14,10 +14,11 @@ import java.util.Scanner;
 */
 public class Test3 {
 	public static void main(String[] args) {
-		System.out.println("주사위번호(1~6) 사이의 숫자중 하나만 입력.");
-		Scanner scan = new Scanner(System.in);
-		int userNumber = scan.nextInt();
+		
+		//시스템과 사용자 주사위 셋팅
+		int userNumber = (int)(Math.random()*6)+1;
 		int systemNumber = (int)(Math.random()*6)+1;
+		
 		int system = systemNumber;
 		
 		if(system==userNumber) {

@@ -28,6 +28,7 @@ public class Test2 {
 		int my = scan.nextInt();
 		int com = (int)(Math.random()*3)+1;
 		
+		System.out.print("시스템:"+com+" ,사용자:"+my);
 		if(com==my) {
 			System.out.println("비김");
 		}else if(com<my) {
@@ -36,14 +37,30 @@ public class Test2 {
 			System.out.println("시스템승리!");
 		}
 		
-		/*
-		if(com==my) {
-			System.out.println("컴퓨터 : "+com+" 비겼습니다.");
-		}else if(com<my) {
-			System.out.println("컴퓨터 :"+com+" 사용자승리!");
-		}else if(com>my) {
-			System.out.println("컴퓨터 :"+com+" 사용자패배!");
-		}*/
+		/*  강사님 코드
+		int srp = (int)(Math.random() * 3) + 1;
+		System.out.println
+     ("가위(1), 바위(2), 보(3) 를 숫자로 입력하세요");
+		Scanner scan = new Scanner(System.in);
+		int mySrp = scan.nextInt();
+		boolean userwin = false;
+		System.out.print("시스템:" + srp + ",사용자:" + mySrp);
+		if (mySrp == srp) 
+			System.out.println("\t비김.");
+		else { //승부판단
+			switch(srp) { 
+			case 1 :
+				if(mySrp == 2) userwin = true; break;
+			case 2 :
+				if(mySrp == 3) userwin = true; break;
+			case 3 :
+				if(mySrp == 1) userwin = true; break;
+			}
+			if (userwin)
+				System.out.println(" \t사용자 승리!");
+			else
+				System.out.println(" \t시스템 승리!");
+		}  */
 		
 	}
 }
