@@ -3,41 +3,51 @@ package chap4;
 import java.util.Scanner;
 
 /*
- * 농장에 강아지,병아리가 있다.
- * 강아지,병아리의 전체 마리수와, 다리수를 입력받고,
- * 강아지의 마리수와 병아리의 마리수를 출력하자.
- * 
+ * 1~100사이의 임의의 수를 컴퓨터가 저장함.
+ * 사용자는 숫자를 입력받아서 저장된 숫자를 맞추기 
+ * 시스템  : 37가정
  * [결과]
- * 마리수 입력 : 20 
- * 다리수 입력 : 30
- * 강아지 : xx
- * 병아리 : yy
- * 
+ * 1~100사이의 숫자입력 : 50 
+ * 작은 수입니다.
+ * 1~100사이의 숫자입력 : 25 
+   큰수입니다.
+   1~100사이의 숫자입력 : 37 
+   정답입니다.
+   프로그램 종료.
+   
+   입력회수가 5번이하인 경우 : 빨리 맞췄습니다.
+   입력횟수가 10번이하인경우 : 보통입니다.
+   입력횟수가 11번이상인 경우 : 매우 늦었습니다. 
+   
  */
 public class Exam10 {
 	public static void main(String[] args) {
-		System.out.print("마리수 입력");
-		System.out.print("다리수 입력");
+		int sysnum = (int)(Math.random()*100)+1;
 		Scanner scan = new Scanner(System.in);
-		int cnt = scan.nextInt(); //마리수 2 
-		int leg = scan.nextInt(); //다리수 6
-		boolean check =false; //마지막에 계산안될때 사용됨
+		int count = 0; //입력횟수 저장할 변수
 		
-		for(int x=0; x<=cnt; x++) {
-			for(int y=0; y<=cnt; y++) {
-				if((x+y==cnt) && ((4*x)+(2*y)== leg)){
-					System.out.println("강아지수:"+x);
-					System.out.println("병아리수:"+y);
-					check = true; //조건만족
-				}
+		while(true) {
+			System.out.println("1~100사이의 숫자입력 : ");
+			int data = scan.nextInt();// 입력받기
+			if(sysnum > data) {
+				count++;
+				System.out.println("큰수입니다.");
+			}else if(sysnum<data){
+				count++;
+				System.out.println("작은수입니다.");
+			}else {
+				System.out.println("정답입니다.");
+				break;
 			}
 		}
-		/* check == true  : !check => false 
-		   check == false : !check => true  */
-		if(!check) { //check == false
-			System.out.println("계산안됨.");
+		System.out.println("프로그램이 종료");
+		if(count<=5) {
+			System.out.println(count+"번으로"+"빨리 맞췄습니다.");
+		}else if(count<=10) {
+			System.out.println("보통입니다.");
+		}else {
+			System.out.println("매우 늦었습니다.");
 		}
-		
-		
+
 	}
 }
