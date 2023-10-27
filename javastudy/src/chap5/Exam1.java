@@ -21,23 +21,17 @@ public class  Exam1 {
 		int minIndex= 0;		//최솟값인덱스
 		int total = 0;  		//합
 		
-		for(int i =0; i<arr.length;i++) {
-			arr[i] = scan.nextInt();
-			total += arr[i];
-			//최대 최소 인덱스 
+		for(int i =1; i<arr.length; i++) {
+			arr[i]= scan.nextInt();
+			total+=arr[i];
 			if(max < arr[i]) {
-				max = arr[i];
-				maxIndex = i;
+				max=arr[i];
+				i=maxIndex;
 			}
-			if(min>arr[i]) {
+			if(min >arr[i]) {
 				min=arr[i];
-				minIndex=i;
+				i=minIndex;
 			}
-			
-			/*if(arr[maxIndex]<arr[i]) maxIndex=i;
-			  if(arr[minIndex]>arr[i]) minIndex=i;
-			  System.out.println("최대:"+arr[maxIndex]);		
-			  System.out.println("최소:"+arr[minIndex])*/
 			
 		}
 		

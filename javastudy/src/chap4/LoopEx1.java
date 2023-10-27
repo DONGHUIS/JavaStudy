@@ -34,6 +34,8 @@ public class LoopEx1 {
 			System.out.print(i);
 		}
 		System.out.println();
+		
+		
 		System.out.println("while문 이용한 1-5출력");
 		int i = 1 ;
 		while(i<=5) {
@@ -42,6 +44,8 @@ public class LoopEx1 {
 		}
 		System.out.println();
 		System.out.println("i=" +i);
+		
+		
 		System.out.println("do~while문 이용한 1-5출력");
 		i = 1;
 		do {
