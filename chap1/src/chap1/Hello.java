@@ -1,5 +1,7 @@
 package chap1;
 
+import java.util.Scanner;
+
 public class Hello {
 	/*
 	 * 주석(comment) : 컴파일이 되지않은 영역 -> 기계어로 번역 되지않음. 
@@ -21,6 +23,17 @@ public class Hello {
 		//System.out : 표준출력 -> 콘솔(화면)출력
 		System.out.println("Hello World");
 		System.out.println("Hello Java");
+		
+		//때, A+B, A-B, A*B, A/B(몫), A%B(나머지)
+		System.out.println("|\\_/|");
+		System.out.println("|q p|   /}");
+		System.out.println("( 0 )\"\"\"\\");
+		System.out.println("|\"^\"`    |");
+		System.out.println("||_/=\\\\__|");
+		
+		
+		
+		
 	}
 
 }

@@ -9,7 +9,6 @@ public class ArrayEx1 {
 		//2, 배열객체 생성
 		arr = new int[5]; //new 예약어 - 1,객체생성(int값 5개 저장할수있는 변수를 할당,length상수값 설정.)
 						  //	       2,기본값 초기화 - 숫자형:0 , boolean : false , 그외 :null
-		
 		//배열값저장
 		arr[0]=10;
 		arr[1]=20;
