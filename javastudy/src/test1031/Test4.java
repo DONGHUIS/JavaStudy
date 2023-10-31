@@ -12,6 +12,27 @@ package test1031;
               기능 : 총점(국어,영어,수학 점수의 합) 을 과목수로 나눈 평균 반환
               리턴타입 : float
  */
+class Student{
+	String name;
+	int ban;
+	int no;
+	int kor;
+	int eng;
+	int math;
+	int getTotal() {
+		return kor+math+eng;
+	}
+	
+	float getAverage() {
+		return kor+math+eng/3;
+	}
+	
+	public String toString() {
+		return no+"번"+ban+"반의 학생:"+name+"의 국어,영어,수학점수는 "+ kor + eng + math ;
+		
+	}
+}
+
 public class Test4 {
 	public static void main(String[] args) {
 		Student s1 =new Student();
