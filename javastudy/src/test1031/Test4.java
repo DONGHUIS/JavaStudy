@@ -19,16 +19,18 @@ class Student{
 	int kor;
 	int eng;
 	int math;
-	int getTotal() {
-		return kor+math+eng;
+	
+	
+	int getTotal(int a,int b, int c) {
+		return a+b+c;
 	}
 	
-	float getAverage() {
-		return kor+math+eng/3;
+	float getAverage(float a,float b,float c ,int d) {
+		return (a+b+c)/d;
 	}
 	
 	public String toString() {
-		return no+"번"+ban+"반의 학생:"+name+"의 국어,영어,수학점수는 "+ kor + eng + math ;
+		return no+"번"+ban+"반의 학생:"+name+"의 국어점수는 "+ kor +"점입니다.";
 		
 	}
 }
@@ -42,9 +44,8 @@ public class Test4 {
 		s1.kor = 100;
 		s1.eng = 80;
 		s1.math = 85;
-		
-		System.out.printf("번호:%s,이름:%s,반:%s,국어:%d,수학:%d,영어:%d \n",s1.no,s1.name,s1.ban,s1.kor,s1.math,s1.eng);
-		System.out.print("총합:"+s1.getTotal()+",");
-		System.out.println("평균:"+s1.getAverage());
+		System.out.println(s1);
+		System.out.print("총합:"+s1.getTotal(s1.kor,s1.eng,s1.math)+",");
+		System.out.println("평균:"+s1.getAverage(s1.kor,s1.eng,s1.math,3));
 	}
 }
