@@ -12,6 +12,7 @@ class Card {
 	int number;
 	static int width = 100;
 	static int height = 250;
+	
 	public String toString() {
 		return kind + ":" + number + "(" + width + "," + height + ")";
 	}
@@ -19,12 +20,12 @@ class Card {
 
 public class Test1 {
 	public static void main(String[] args) {
-		Card c = new Card();
+		Card c = new Card(); //객체화
 		c.kind ="Heart";
 		c.number=1;
 		c.width=100;
 		c.height=250;
-		System.out.println(c);
+		System.out.println(c); //toString() 멤버 메서드 호출
 		
 		Card c1 = new Card();
 		c1.kind ="Spade";

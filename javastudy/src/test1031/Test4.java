@@ -21,17 +21,18 @@ class Student{
 	int math;
 	
 	
-	int getTotal(int a,int b, int c) {
-		return a+b+c;
+	int getTotal() {
+		return kor+eng+math;
 	}
 	
-	float getAverage(float a,float b,float c ,int d) {
-		return (a+b+c)/d;
+	float getAverage() {
+		return getTotal()/3f;
 	}
 	
 	public String toString() {
-		return no+"번"+ban+"반의 학생:"+name+"의 국어점수는 "+ kor +"점입니다.";
-		
+//		return no+"번 "+ban+"반의 학생:"+name+"의 국어점수는 "+ kor +"점입니다."+"총합은 "+getTotal()+ " ,평균은 "+getAverage();
+		return String.format("%d반 %d번 %s=>국어:%d,영어:%d,수학:%d,총점:%d,평균:%.2f",ban,no,name,kor,eng,math,getTotal(),getAverage());
+		//String.format -> 문자열을 내가 지정한 포맷대로 만들어서 사용을 한다.
 	}
 }
 
@@ -44,8 +45,10 @@ public class Test4 {
 		s1.kor = 100;
 		s1.eng = 80;
 		s1.math = 85;
-		System.out.println(s1);
-		System.out.print("총합:"+s1.getTotal(s1.kor,s1.eng,s1.math)+",");
-		System.out.println("평균:"+s1.getAverage(s1.kor,s1.eng,s1.math,3));
+		//홍길동 학생의 전체 정보 출력
+		System.out.println(s1); //s1.toString() 메서드 호출됨.
+		
+		System.out.print("총합:"+s1.getTotal()+",");
+		System.out.println("평균:"+s1.getAverage());
 	}
 }
