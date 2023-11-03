@@ -17,18 +17,21 @@ class Rectangle{
 	int width ;
 	int height;
 	static int cnt;
-	int sno;
+	int sno; 
 	
 	Rectangle(int w , int h){
 		this.width = w;
 		this.height = h;
 	}
+	int area() {
+		return width*height;
+	}
 	
-	int length = 2*(width+height);
-	int area = (width*height);
-	
+	int length() {
+		return 2*(width+height);
+	}
 	public String toString() {
-		return sno +"/"+cnt+" 사각형:("+ width +","+height+") 면적:" + (width*height) +",둘레:"+2*(width+height);
+		return sno +"/"+cnt+" 사각형:("+ width +","+height+") 면적:" + area() +",둘레:"+ length();
 	}
 	
 }
@@ -37,16 +40,15 @@ class Rectangle{
 
 public class Test01 {
 	public static void main(String[] args) {
-		Rectangle[] rarr = new Rectangle[5];
+		Rectangle[] rarr = new Rectangle[5]; 
 		int totarea = 0;
 		int totlength = 0;
 		for(int i=0;i<rarr.length;i++) {
-			int width = (int)(Math.random() * 31) + 20;
+			int width = (int)(Math.random() * 31) + 20; 
 			int height =(int)(Math.random() * 31) + 20;
-			
-			rarr[i] = new Rectangle(width,height);
-			totarea += (width*height); 
-			totlength += 2*(width+height); 
+			rarr[i] = new Rectangle(width,height); //생성자
+			totarea += rarr[i].area();    
+			totlength += rarr[i].length(); 
 			rarr[i].sno = ++Rectangle.cnt;
 		}
 		for(Rectangle r : rarr) {
