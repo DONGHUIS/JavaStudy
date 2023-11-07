@@ -14,6 +14,27 @@ package test1103;
 노래를 부릅니다
 그림을 그립니다 	
 */
+abstract class Robot{//추상클래스 
+	abstract void action(); //추상메서드
+}
+class DanceRobot extends Robot{
+	void action(){
+		System.out.println("춤을춥니다.");
+	}
+}
+
+class SingRobot extends Robot{
+	void action(){
+		System.out.println("노래를 부릅니다.");
+	}
+}
+
+class DrawRobot extends Robot{
+	void action(){
+		System.out.println("그림을 그립니다.");
+	}
+}
+
 public class Test2 {
 	public static void main(String[] args) {
 		Robot[] bots = new Robot[3];

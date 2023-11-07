@@ -11,6 +11,41 @@ package test1103;
   [결과]    
   1K,2,3K,4,5,6,7,8K,9,10,1,2,3,4,5,6,7,8,9,10,
  */
+class SutdaCard{
+	final int number;
+	final boolean isKwang;
+	
+	SutdaCard(int number,boolean isKwang) {
+		this.number = number; //생성자에서 상수값 초기화
+		this.isKwang = isKwang;	
+	}
+	
+	@Override
+	public String toString() {
+		return  number +((isKwang)?"K":"");
+	}
+}
+/**
+ * 아래 부분 복습 부분
+ */
+class SutdaDeck{
+	SutdaCard cards[] = new SutdaCard[20];
+	SutdaDeck() {
+		for(int i=0;i<cards.length;i++) {
+			cards[i]=new SutdaCard
+					((i%10+1),((i==0||i==2||i==7)?true:false));
+		}
+	}
+	@Override
+	public String toString() {
+		String result = "";
+		for(SutdaCard s : cards)
+			result += s + ",";
+		return result;
+		}
+	}
+
+
 public class Test3 {
 	public static void main(String[] args) {
 		SutdaDeck deck = new SutdaDeck();

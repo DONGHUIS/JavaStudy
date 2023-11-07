@@ -39,9 +39,11 @@ class Dog extends Animal{
 	Dog(){
 		super("강아지",4);
 	}
-	void eat() {
+	@Override
+	void eat() { //오버라이딩 필수
 		System.out.println("주인이 주는대로 먹는다.");
 	}
+	@Override
 	void sound() {
 		System.out.println("멍멍짖는다");
 	}
