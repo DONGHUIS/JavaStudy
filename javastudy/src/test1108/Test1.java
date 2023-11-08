@@ -6,8 +6,8 @@ package test1108;
 public class Test1 {
 	public static void main(String[] args) {
 		String str = "1,234";
-		int i = Integer.parseInt(str.replace(",",""))*10;
-		System.out.printf("%,d",i);
+		int k = Integer.parseInt(str.replace(",",""))*10;
+		System.out.printf("%,d",k);
 		
 		
 	}

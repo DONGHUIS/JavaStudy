@@ -19,15 +19,14 @@ public class Test4 {
 	}
 	
 	static String round(double a,int b) {
-		
 		return String.format("%."+b+"f",a);
 	}
 	
 	static double truncate(double a,int b) {
-		double result = 0 ;
-		int[] arr = {10,100,1000,10000};
-		result = (Math.floor(a*arr[b-1]))/arr[b-1];
-			
-		return result ;
+		int arr[] = {10,100,1000,10000};
+		
+		double result = Math.floor(a*arr[b-1])/arr[b-1];
+		
+		return result;
 	}
 }
