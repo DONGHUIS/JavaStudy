@@ -25,6 +25,55 @@ abstract class Animal{
 		this.type=type;
 		this.leg=leg;
 	}
+	abstract void eat();
+	abstract void sound();
+}
+
+class Dog extends Animal{
+	Dog(){
+		super("강아지",4);
+	}
+	@Override
+	void eat() {
+		System.out.println("주인이 주는대로 먹는다.");
+	}
+	
+	@Override
+	void sound() {
+		System.out.println("멍멍짖는다.");
+	}
+}
+
+class Lion extends Animal{
+	Lion(){
+		super("사자",4);
+	}
+	@Override
+	void eat() {
+		System.out.println("초식동물을 잡아먹는다.");
+	}
+	
+	@Override
+	void sound() {
+		System.out.println("어흥거린다.");
+	}
+}
+
+class Eagle extends Animal{
+	Eagle() {
+		super("독수리",2);
+	}
+	
+	@Override
+	void eat() {
+		System.out.println("동물를 잡아 먹는다");
+	}
+	
+	@Override
+	void sound() {
+		System.out.println("모른다.");
+	}
+	
 }
 
 public class Test1 {

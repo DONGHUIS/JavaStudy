@@ -23,10 +23,11 @@ public class Test1 {
 		Scanner scan = new Scanner(System.in);
 		//System.out.println(system);
 		System.out.println("생각한 숫자를 입력하세요.(1~100):");
-		int count =1;
+		int count =1; //입력한 횟수 저장.
 		while(true) {
 			try {
 				int num = scan.nextInt();
+				//1~100사이의 정수가 입력된 경우만 실행.
 				if(0<num && num<101) {
 					if(system>num) {
 						System.out.println("정답보다 작네요.숫자를 올리세요.");
@@ -39,13 +40,13 @@ public class Test1 {
 						break;
 					}
 				}else {
-					throw new Exception("입력가능한 범위가 아니네요.다시입력하세요.");	
+					throw new Exception("입력가능한 범위가 아니네요.다시입력하세요.");//예외 발생
 				}
 			}catch (InputMismatchException e) {
 				scan.next();
 				System.out.println("정수만 입력하세요.");
 				count++;
-				continue;
+				continue; //반복문 처음으로 제어 이동
 				//e.printStackTrace();
 			}catch (Exception e) {
 				System.out.println(e.getMessage());

@@ -1,4 +1,4 @@
-package Assignment2;
+package test1025;
 
 import java.util.Random;
 import java.util.Scanner;
