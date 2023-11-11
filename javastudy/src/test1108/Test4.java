@@ -18,11 +18,12 @@ public class Test4 {
 		System.out.println(truncate(3.15345,4));  //3.1534
 	}
 	
-	static String round(double a,int b) {
-		return String.format("%."+b+"f",a);
+	private static double round(double a,int b) {
+		String sf = String.format("%."+b+"f",a);
+		return Double.parseDouble(sf);
 	}
 	
-	static double truncate(double a,int b) {
+	private static double truncate(double a,int b) {
 		int arr[] = {10,100,1000,10000};
 		
 		double result = Math.floor(a*arr[b-1])/arr[b-1];

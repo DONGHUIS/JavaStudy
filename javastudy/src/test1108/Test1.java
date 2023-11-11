@@ -9,6 +9,5 @@ public class Test1 {
 		int k = Integer.parseInt(str.replace(",",""))*10;
 		System.out.printf("%,d",k);
 		
-		
 	}
 }

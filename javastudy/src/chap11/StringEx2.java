@@ -7,7 +7,7 @@ public class StringEx2 {
 		String s = new  String("ABCDEFGH");
 		
 		//charAt(4) : 5번째 문자 리턴. 4번인덱스 문자(char) 리턴
-		System.out.println("s.charAt(4):"+s.charAt(4)); //E
+		System.out.println("s.charAt(4):"+s.charAt(4)); //E 
 		
 		/*s.compareTo("abc") : 결과가 양수 s 문자열이 "abc"문자열보다 앞쪽 
 							   결과가 음수 s 문자열이 "abc"문자열보다 뒤쪽 
