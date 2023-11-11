@@ -18,14 +18,17 @@ public class Exam6 {
 		
 		Calendar day = Calendar.getInstance(); //현재날짜
 		
-		//입력한 날짜로 Calendar 설정
-		int last = day.getActualMaximum(Calendar.DATE);
 		day.set(year, mon-1 ,1); //입력한 날짜의 1일		
+		int last = day.getActualMaximum(Calendar.DATE);
 		day.set(year, mon-1 ,last); //입력한 날짜의 마지막일 
 		
 		String w =" 일월화수목금토";
 		System.out.printf("날짜:%d-%d-%d %c요일\n",day.get(Calendar.YEAR),
 				day.get(Calendar.MONTH)+1,day.get(Calendar.DATE),
 				w.charAt(day.get(Calendar.DAY_OF_WEEK)));
+		
+		
+		
+	
 	}
 }
