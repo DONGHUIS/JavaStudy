@@ -1,5 +1,7 @@
 package test1113;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 /*
@@ -38,6 +40,36 @@ y
 */
 public class Test3 {
 	public static void main(String[] args) {
+		Map<String,String>map = new HashMap<String,String>();
+		map.put("떡볶이","오뎅");
+		map.put("짜장면","단무지");
 		Scanner scan = new Scanner(System.in);
+		
+		while(true) {
+			System.out.println("음식명을 입력하세요(종료:종료)");
+			String food = scan.next();
+			String side= map.get(food);
+			String enroll;
+			if(food.equalsIgnoreCase("종료")) {
+				for(Map.Entry<String,String>e:map.entrySet()) {
+					System.out.println(e.getKey()+"=>"+e.getValue());
+				}
+				System.out.println("프로그램 종료");
+				break;
+			}
+			if(side==null) {
+				System.out.println(food+":의 궁합음식이 등록되어 있지 않습니다.등록하시겠습니까?(네/아니오)");
+				enroll =scan.next();
+				if(enroll.equalsIgnoreCase("네")) {
+					System.out.println(food+"의 등록을 위해 궁합음식 입력하세요.");
+					side = scan.next();
+					map.put(food, side);
+				}else {
+					continue;
+				}
+			}else {
+				System.out.println(food+"의 궁합음식:"+side);
+			}
+		}
 	}
 }
