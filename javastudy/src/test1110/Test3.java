@@ -38,6 +38,28 @@ import java.util.List;
 김삿갓:국어(95),영어(85),수학(75),총점(255),평균(85.00)
 홍길동:국어(90),영어(80),수학(70),총점(240),평균(80.00)
  */
+class Student {
+	String name;
+	int kor;
+	int math;
+	int eng;
+	Student(String name,int kor,int math,int eng){
+		this.name=name;
+		this.kor=kor;
+		this.math=math;
+		this.eng=eng;
+	}
+	
+    int getTotal() {
+    	return (kor+math+eng)/3;
+    }
+    public String toString() {
+    	return name +":"+"국어("+kor+"),수학("+math+"),영어("+eng+"),총점("+getTotal()+")";
+    }
+
+}
+
+
 public class Test3 {
 	public static void main(String[] args) {
 		List<Student> list = new ArrayList<Student>();

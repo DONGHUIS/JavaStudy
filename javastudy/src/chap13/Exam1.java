@@ -19,29 +19,28 @@ public class Exam1 {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("홀수개의 숫자 입력하시요.(종료:999)");
 		List<Integer> list = new ArrayList<>();
-		int sum = 0;
+		int sum =0;
 		
 		while(true) {
-			int input = scan.nextInt();
-			
-			if(input == 999) {
+			int num = scan.nextInt();
+			if(num==999) {
 				System.out.println("종료");
 				break;
 			}
-			list.add(input);
 			
-			sum += input;
-			
-		}
-		if(list.size()%2 ==0) {
-			list.remove(list.size()-1);
-		}
+			list.add(num);
+			sum+=num;
+		
+		}	
+			if(list.size() % 2 == 0) {
+				list.remove(list.size()-1);
+			}
 		
 		System.out.println(list);
 		System.out.println("합계:"+sum);
 		System.out.println("평균:"+(double)sum/list.size());
-		Collections.sort(list);
 		System.out.println("중간값:"+list.get(list.size()/2));
+		
 	}
 }
 

@@ -14,6 +14,7 @@ public class ArrayEx3 {
 		for(int i=0; i<balls.length;i++) {
 			balls[i] = i+1; //1~45값 balls 배열에 저장
 		}	
+		
 		//ball 섞기
 		for(int i=0;i<=1000; i++) { //i : 0~1000
 			int f =(int)(Math.random()*balls.length); //0~44까지의 임의의수 . 3 

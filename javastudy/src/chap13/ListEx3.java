@@ -31,16 +31,13 @@ class Data implements Comparable<Data>{
 	Data(int value){
 		this.value=value;
 	}
-
-	@Override
-	public int compareTo(Data d) { //기본정렬방식
-//		return (value - d.value)*(-1); //오름차순 정렬
-		return d.value - value;		   //내림차순 정렬
-	}
-
-
 	public String toString() {
 		return value+"";
+	}
+	@Override
+	public int compareTo(Data d) {
+//		return value - d.value; //오름차순정렬
+		return d.value-value; //내림차순정렬
 	}
 }
 
@@ -54,44 +51,56 @@ class Data2{
 	}
 }
 
+
+
 public class ListEx3 {
 	public static void main(String[] args) {
-		List<String> list1 = new ArrayList<>();
-		list1.add("a");	list1.add("c");	list1.add("d");
-		list1.add("b");	list1.add("f");
-		Collections.sort(list1);
-		System.out.println(list1);
+		List<String> list = new ArrayList<String>();
+		list.add("a");
+		list.add("b");
+		list.add("f");
+		list.add("d");
+		list.add("e");
+		Collections.sort(list);
+		System.out.println(list);
+		
 		List<Data> list2 = new ArrayList<>();
-		list2.add(new Data(3));	list2.add(new Data(2));	
-		list2.add(new Data(1));	
+		list2.add(new Data(3));		
+		list2.add(new Data(2));		
+		list2.add(new Data(1));
 		System.out.println(list2);
-		Collections.sort(list2);
-		System.out.println(list2);
-		//Comparator.reverseOrder() : 정렬방식을 반대로 처리
 		Collections.sort(list2,Comparator.reverseOrder());
 		System.out.println(list2);
-		System.out.println("///Data2 객체 정렬하기///");
+		
+		System.out.println("Data2 객체 정렬하기");
 		List<Data2> list3 = new ArrayList<>();
-		list3.add(new Data2(2));	list3.add(new Data2(3));	
-		list3.add(new Data2(1));
-		System.out.println("정렬전:"+list3);
+		list3.add(new Data2(2));		
+		list3.add(new Data2(1));		
+		list3.add(new Data2(3));
+		System.out.println(list3);
 		Comparator<Data2> c = new Comparator<Data2>() {
 			@Override
-			public int compare(Data2 o1,Data2 o2) {
+			public int compare(Data2 o1, Data2 o2) {
 				return o1.value-o2.value;
 			}
 		};
 		Collections.sort(list3,c);
 		System.out.println(list3);
+		
+		//역순으로 정렬하기
 		Collections.sort(list3,new Comparator<Data2>() {
 			@Override
 			public int compare(Data2 o1,Data2 o2) {
-				return o2.value -o1.value;
+				return o2.value-o1.value;
 			}
 		});
 		System.out.println(list3);
-		//람다방식으로 정렬하기 : 오름차순 정렬
+		
+		//람다방식으로 정렬하기
+		System.out.println("람다방식으로 정렬하기 list3");
 		Collections.sort(list3,(d1,d2)->d1.value-d2.value);
 		System.out.println(list3);
+		
+		
 	}
 }

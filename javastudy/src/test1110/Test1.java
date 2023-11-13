@@ -1,6 +1,8 @@
 package test1110;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * phoneNumArr 에서
@@ -28,13 +30,24 @@ public class Test1 {
 		
 		Scanner scan = new Scanner(System.in);
 		System.out.println("찾고자 하는 번호를 입력하세요(종료:q)");
-		String input = scan.nextLine();
-
+		
+		
+		String pattern = "(\\w)-(\\w)-(\\w)";
+		Pattern p = Pattern.compile(pattern);
+		
+		
 		while(true) {
-			if(input == "q") {
-				System.out.println("종료");
+			String input = scan.nextLine();
+			if(input.equals("q")) {
 				break;
 			}
+			int cnt=0;
+			
+			if(cnt==0) {
+				System.out.println(input+":찾는번호가 없습니다.");
+			}
+			
+			
 			
 			
 			

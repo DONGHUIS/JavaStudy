@@ -30,7 +30,23 @@ public class RegularEx2 {
 				"[a-z]+","02|010","\\s","\\S","\\d","\\w","\\W"};
 		String datas[] = {"","a","1","12","012","abc","02"," ","A","5","a","*"};
 		
-		
+		for(String d : datas) {
+			if(d.equals("")) {
+				System.out.print("빈문자의\"\"의패턴=>");
+			}else if(d.equals(" ")) {
+				System.out.print("공백문자의 \"\"의 패턴=>");
+			}else {
+				System.out.print(d+"문자의 패턴=>");
+			}
+			for(String p : patterns) {
+				Pattern pp = Pattern.compile(p);
+				Matcher m = pp.matcher(d);
+				if(m.matches()) {
+					System.out.print(p+",");
+				}
+			}
+			System.out.println();
+		}
 		
 	}
 }
