@@ -10,8 +10,8 @@ import java.util.Map;
  * SutdaCard클래스 구현하기 
  */
 class SutdaCard{
-	int num;
-	boolean isKwang;
+	final int num;
+	final boolean isKwang;
 	SutdaCard(int num,boolean isKwang) {
 		this.num = num;
 		this.isKwang=isKwang;
@@ -74,9 +74,76 @@ class SutdaDeck{
 			System.out.println(cards);
 		}
 }
+/*
+ * Player 클래스 
+ * 멤버변수 : name 
+ * 		   SutdaCard card1 , card2
+ * 생성자 : 멤버값을 받아서 객체 생성
+ * 멤버메서드 
+ *    int getScore() : card1 , card2로 점수를 리턴.
+ *    				  jokbo객체에 존재하는 경우 jokbo의 값을 리턴
+ *    				  jokbo객체에 없는 경우 (card1.num + card2.num)%10 점수리턴
+ *    String toString() : 이름과 카드2장 , 점수 출력
+ *    			홍길동(2,8K) : 0
+ *    		    김삿갓(4,8)  :   2
+ *    			이몽룡(1K,3K) : 4000
+ */
+class Player{
+	String name;
+	SutdaCard card1;
+	SutdaCard card2;
+	
+	public Player(String name , SutdaCard card1, SutdaCard card2) {
+		super();
+		this.name = name;
+		this.card1=card1;
+		this.card2=card2;
+	}
+	
+	public int getScore() {
+		Integer score = 0;
+		if(card1.isKwang && card2.isKwang) {
+			score = SutdaDeck.jokbo.get("KK");
+		}else {
+			score = SutdaDeck.jokbo.get(""+card1.num+card2.num);
+			if(score == null) {
+				score = (card1.num+card2.num)%10;
+			}
+		}
+		return score;
+	}
+	public String toString() {
+		return name + "(" +card1+","+card2+") :"+ getScore();
+	}
+}
 public class SutdaCardEx1 {
 	public static void main(String[] args) {
 		SutdaDeck deck = new SutdaDeck();
 		deck.shuffle();
+		List<Player> list = new ArrayList<Player>();
+		list.add(new Player("김동휘", deck.pick(0),deck.pick(0)));
+		list.add(new Player("김휘동", deck.pick(0),deck.pick(0)));
+		list.add(new Player("동휘김", deck.pick(0),deck.pick(0)));
+		
+		//점수의 내림차순으로 정렬
+		Collections.sort(list,(p1,p2)->p2.getScore()-p1.getScore());
+		
+		for(Player p : list) {
+			System.out.println(p);
+		}
+		System.out.println("deck에 남아있는 카드의 갯수:"+deck.cards.size());
+		System.out.println("deck에 남아있는 카드:"+deck.cards);
+		/*
+		 * 플레이어 중 가장 높은 점수를 가진 Player의 이름 출력하기
+		 * 
+		 * 선수 승리.
+		 * 1등이 2명인 경우 : 홍길동,김삿갓이김.
+		 */
+		if(list.get(0).getScore()==list.get(1).getScore()) {
+			System.out.println(list.get(0).name+","+list.get(1).name+" =>비김");
+		}else {
+			System.out.println(list.get(0).name +" => 승리");
+		}
+		System.out.println(list);
 	}
 }

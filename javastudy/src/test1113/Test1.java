@@ -2,6 +2,7 @@ package test1113;
 
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.Set;
 import java.util.TreeSet;
@@ -36,21 +37,42 @@ import javax.swing.plaf.synth.SynthOptionPaneUI;
  */
 public class Test1 {
 	public static void main(String[] args) {
-		Set<Object> prize = new LinkedHashSet<Object>();
-		
-		int cnt = 0;
-		while(true) {
-			cnt++;
-			
-			System.out.println(cnt+"등 복권 추첨합니다.");
-			Random rand = new Random();
-			for(int i=0; i<6; i++) {
-				prize.add(rand.nextInt(1000)+1);				
-			}		
-			if(cnt==3) {
-				System.out.println(prize);
-				break;
+		Set<Integer> set = new LinkedHashSet<>();
+		Random rand = new Random();
+		rand.setSeed(System.currentTimeMillis());
+		while(set.size()<6) {
+			if(set.size()==0) {
+				System.out.println("3등복권추첨합니다.");
+			}else if(set.size()==3) {
+				System.out.println("2등복권추첨합니다.");
+			}else if(set.size()==5) {
+				System.out.println("1등 복권 추첨합니다.");
+			}
+			int num = rand.nextInt(1000)+1;
+			if(set.add(num)) {
+				System.out.println(num);
+			}
+			System.out.println("***복권 추첨 결과***");
+			List<Integer>list = new ArrayList<>(set); //List <= Set
+			for(int i=list.size()-1;i>=0;i--) {
+				if(i==list.size()-1) {
+					System.out.println("1등:" + list.get(i));				
+				}else if(i==list.size()-2) {
+					System.out.print("2등:" + list.get(i) + ",");
+				}else if(i<list.size()-2 && i>=3) {
+					System.out.print(list.get(i) + ",");
+				}else if(i==2) {
+					System.out.print("\n3등:" + list.get(i)+ ",");
+				}else {
+					System.out.print(list.get(i)+ ",");
+				}
+				System.out.println("\n==========");
+				System.out.println("1등:"+list.subList(5, 6));
+				System.out.println("1등:"+list.subList(5, 6));
+				System.out.println("1등:"+list.subList(5, 6));				
+				System.out.println("\n==========");
 			}
 		}
+		
 	}
 }

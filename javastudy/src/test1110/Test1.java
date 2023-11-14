@@ -29,27 +29,32 @@ public class Test1 {
 				"051-1234-5678","02-1234-7890"};
 		
 		Scanner scan = new Scanner(System.in);
-		System.out.println("찾고자 하는 번호를 입력하세요(종료:q)");
-		
-		
-		String pattern = "(\\w)-(\\w)-(\\w)";
-		Pattern p = Pattern.compile(pattern);
-		
-		
+				
 		while(true) {
-			String input = scan.nextLine();
-			if(input.equals("q")) {
+			System.out.println("찾고자 하는 번호를 입력하세요(종료:q)");
+			String input = scan.nextLine().trim();
+			if(input.equals("")) {
+				continue;
+			}else if(input.equalsIgnoreCase("q")) {
 				break;
 			}
+			String pattern =input;
+			Pattern p = Pattern.compile(pattern);
 			int cnt=0;
 			
+			for(int i=0;i<phoneNumArr.length;i++) {
+				String phoneNum = phoneNumArr[i];
+				//- 사이에 찾는 번호가 있는경우
+				String num =phoneNum.replace("-","");
+				Matcher m = p.matcher(num);
+				if(m.find()) {
+					cnt++;
+					System.out.println(phoneNum);
+				}
+			}
 			if(cnt==0) {
 				System.out.println(input+":찾는번호가 없습니다.");
 			}
-			
-			
-			
-			
 			
 		}
 	}

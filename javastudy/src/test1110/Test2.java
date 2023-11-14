@@ -81,10 +81,13 @@ public class Test2 {
 		System.out.println("입력된 홀수 목록:"+list);
 		Collections.sort(list);
 		System.out.println(list);
-		
-		
-		
-		System.out.println("중간값:"+(double)sum/list.size());
+		System.out.print("중간값:");
+		if(list.size()%2==1) {
+			System.out.print(list.get(list.size()/2));
+		}else {
+			double m = (list.get(list.size()/2-1)+list.get(list.size()/2))/2.0;
+			System.out.print(m);
+		}
 		
 	}
 }

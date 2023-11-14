@@ -1,6 +1,7 @@
 package test1113;
 
 import java.util.Comparator;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.TreeSet;
 
@@ -25,17 +26,22 @@ public class Test2 {
 		TreeSet<Integer> set1 = new TreeSet<>((s1,s2)->s1.compareTo(s2));
 		TreeSet<Integer>set2=new TreeSet<>(Comparator.reverseOrder());
 		while(true) {
-			int num = scan.nextInt();
-			if(1<=num && num<=99) {
-				set1.add(num);
-				set2.add(num);
+			try { //문자입력 받으면 예외처리로 지운다.
+				int num = scan.nextInt();
+				if(1<=num && num<=99) {
+					set1.add(num);
+					set2.add(num);
+					
+				}
+				if(num == 0) {
+					System.out.print("set1:"+set1);
+					System.out.println();
+					System.out.print("set2:"+set2);
+					break;
+				}
 				
-			}
-			if(num == 0) {
-				System.out.print("set1:"+set1);
-				System.out.println();
-				System.out.print("set2:"+set2);
-				break;
+			} catch (InputMismatchException e) {
+				scan.next();
 			}
 			
 		}

@@ -1,6 +1,7 @@
 package test1110;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /*
@@ -38,12 +39,13 @@ import java.util.List;
 김삿갓:국어(95),영어(85),수학(75),총점(255),평균(85.00)
 홍길동:국어(90),영어(80),수학(70),총점(240),평균(80.00)
  */
-class Student {
+class Student implements Comparable<Student> {
 	String name;
 	int kor;
 	int math;
 	int eng;
-	Student(String name,int kor,int math,int eng){
+	public Student(String name,int kor,int math,int eng){
+		super();
 		this.name=name;
 		this.kor=kor;
 		this.math=math;
@@ -51,12 +53,17 @@ class Student {
 	}
 	
     int getTotal() {
-    	return (kor+math+eng)/3;
+    	return kor+math+eng;
     }
     public String toString() {
-    	return name +":"+"국어("+kor+"),수학("+math+"),영어("+eng+"),총점("+getTotal()+")";
+    	//return name +":"+"국어("+kor+"),수학("+math+"),영어("+eng+"),총점("+getTotal()+")"+"평균("+getTotal()/3.0+")";
+    	return String.format("%s:국어(%d),수학(%d),영어(%d),총점(%d),평균(%.2f)",
+    			name,kor,math,eng,getTotal(),getTotal()/3.0);
     }
-
+    @Override
+    public int compareTo(Student o) {
+    	return name.compareTo(o.name);
+    }
 }
 
 
@@ -67,6 +74,31 @@ public class Test3 {
 		list.add(new Student("김삿갓", 95, 85, 75));
 		list.add(new Student("이몽룡", 80, 95, 95));
 		list.add(new Student("임꺽정", 60, 75, 100));
-
+		System.out.println("기본정렬방식 : 이름 오름차순으로 정렬");
+		Collections.sort(list);
+		for(Student s : list) {
+			System.out.println(s);
+		}
+		System.out.println("총점기준 내림차순 정렬");
+		Collections.sort(list,(s1,s2)->s2.getTotal()-s1.getTotal());
+		for(Student s:list) {
+			System.out.println(s);
+		}
+		System.out.println("국어 점수내림차순 정렬");
+		Collections.sort(list,(s1,s2)->s2.kor-s1.kor);
+		for(Student s:list) {
+			System.out.println(s);
+		}
+		System.out.println("수학 점수 내림차순 정렬");
+		Collections.sort(list,(s1,s2)->s2.math-s1.math);
+		for(Student s:list) {
+			System.out.println(s);
+		}
+		System.out.println("영어 점수 내림차순 정렬");
+		Collections.sort(list,(s1,s2)->s2.eng-s1.eng);
+		for(Student s :list) {
+			System.out.println(s);
+		}
+		
 	}
 }

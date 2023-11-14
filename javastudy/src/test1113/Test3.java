@@ -49,18 +49,22 @@ public class Test3 {
 			System.out.println("음식명을 입력하세요(종료:종료)");
 			String food = scan.next();
 			String side= map.get(food);
-			String enroll;
+			String enroll; //추가등록여부
 			if(food.equalsIgnoreCase("종료")) {
 				for(Map.Entry<String,String>e:map.entrySet()) {
 					System.out.println(e.getKey()+"=>"+e.getValue());
 				}
+				//map 데이터조회 
+				/*for(String k : map.keySet()) {
+					System.out.println(k+"의 궁합음식:"+map.get(k));
+				}*/
 				System.out.println("프로그램 종료");
 				break;
 			}
 			if(side==null) {
 				System.out.println(food+":의 궁합음식이 등록되어 있지 않습니다.등록하시겠습니까?(네/아니오)");
 				enroll =scan.next();
-				if(enroll.equalsIgnoreCase("네")) {
+				if(enroll.equalsIgnoreCase("네")) {//equalsIgnoreCase 대소문자 상관없이 받는것. 대소문자 비교 하는것 ->equals
 					System.out.println(food+"의 등록을 위해 궁합음식 입력하세요.");
 					side = scan.next();
 					map.put(food, side);
