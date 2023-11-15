@@ -1,6 +1,7 @@
 package chap14;
 
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 /*
@@ -15,27 +16,26 @@ import java.io.IOException;
 public class FileInputStreamEx1 {
 	public static void main(String[] args) throws IOException {
 		FileInputStream fis = 
-					new FileInputStream("src/chap14/InputStreamEx1.java");
-		int data = 0 ;
-		System.out.println("===== read() 메서드를 이용하여 읽기");
-		// -1 : 파일의 끝. E(nd) O(f) F(ile)
-		while((data=fis.read())!= -1) {
+				new FileInputStream("src/chap14/InputStreamEx1.java");
+		int data=0;
+		System.out.println("====read()메서드를 이용하여 읽기");
+		while((data=fis.read())!=-1) {
 			System.out.print((char)data);
 		}
-		System.out.println("===== int read(byte[] buf) 메서드를 이용하여 읽기");
-		fis = new FileInputStream("src/chap14/InputStreamEx1.java");
-		// fis.available() : 읽기 가능 바이트수 리턴
+		System.out.println("====int read(byte[] buf)메서드를 이용하여 읽기");
+		fis=new FileInputStream("src/chap14/InputStreamEx1.java");
 		byte[] buf = new byte[fis.available()];
-		//data : 실제로 읽은 바이트수
-		while((data=fis.read(buf))!=-1) {
-			//new String(buf,0,data) : buf의 0번인덱스부터 data 길이만큼 문자열 객체로 생성해
+		while((data=fis.read(buf))!= -1) {
+			System.out.print(new String(buf,0,data));
+		} 
+		System.out.println("==== int read(byte[] buf ,int start , int len) 메서드를 이용하여 읽기");
+		fis=new FileInputStream("src/chap14/InputStreamEx1.java");
+		while((data=fis.read(buf,0,buf.length))!= -1) {
 			System.out.print(new String(buf,0,data));
 		}
-		System.out.println();
-		System.out.println("======= int read(byte[] buf,int start,int len)메서드를 이용하며 읽기");
-		fis = new FileInputStream("src/chap14/InputStreamEx1.java");
-		while((data=fis.read(buf,0,buf.length))!=-1) {
-			System.out.print(new String(buf,0,data));
-		}
+		
+		FileOutputStream fos = new FileOutputStream("InputStreamEx1.backup");
+		fos.write(buf);
+		fos.flush();
 	}
 }

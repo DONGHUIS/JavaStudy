@@ -1,6 +1,7 @@
 package test1114;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -33,19 +34,19 @@ public class Test2 {
 					System.err.println("종료");
 					break;
 				}
+				//읽어올 파일이 없는 경우 : FileNotFoundException 예외 발생.
 				FileInputStream fis = new FileInputStream(input);
+			
+				//읽어올 파일이 있는 경우 실행.
 				byte[] buf = new byte[fis.available()];
 				int data = 0;
-				
-				
 				while((data=fis.read(buf))!= -1) {
 					System.out.print(new String(buf,0,data));
-					
 				}	
-			} catch (Exception e) {
+			} catch (FileNotFoundException e) {  // FileNotFoundException  => IOException의 하위클래스
 				System.err.println("해당파일이 없습니다.");
-				scan.next();
-				
+			}catch(IOException e) {
+				e.printStackTrace();
 			}
 			
 			

@@ -13,27 +13,24 @@ import java.io.FileReader;
  */
 public class FileReaderEx1 {
 	public static void main(String[] args) throws Exception {
-		FileReader fr = new FileReader("src/chap14/InputStreamEx1.java");
+		FileReader fr = new  FileReader("src/chap14/InputStreamEx1.java");
 		int data = 0;
-		System.err.println("======int read()메서드를 이용하여 읽기");
-		while((data=fr.read())!=-1) {
+		System.out.println("==== int read()메서드이용해서 읽기");
+		while((data=fr.read())!= -1) {
 			System.out.print((char)data);
 		}
-		
-		
-		char[] buf = new char[8096];
-		System.err.println("======int read(char[]buf)메서드를 이용하여 읽기");
-		fr = new FileReader("src/chap14/InputStreamEx1.java");
-		while((data=fr.read(buf))!=-1) {
+		char[] buf= new char[8096];
+		System.out.println("======int read(char[]buf)메서드를 이용하여 읽기");
+		fr = new  FileReader("src/chap14/InputStreamEx1.java");
+		while((data=fr.read(buf))!= -1) {
+			System.out.print(new String(buf,0,data));
+		}
+		System.out.println("======= int read(byte[] buf,int start,int len)메서드를 이용하며 읽기");
+		fr = new  FileReader("src/chap14/InputStreamEx1.java");
+		while((data = fr.read(buf,0,buf.length))!= -1) {
 			System.out.println(new String(buf,0,data));
 		}
 		
 		
-		
-		System.err.println("======= int read(byte[] buf,int start,int len)메서드를 이용하며 읽기");
-		fr = new FileReader("src/chap14/InputStreamEx1.java");
-		while((data=fr.read(buf,0,buf.length))!= -1) {
-			System.out.println(new String(buf,0,data));
-		}
 	}
 }

@@ -37,5 +37,6 @@ public class MapEx2 {
 		
 		System.out.println("94점포함 앞점수:"+scores.floorEntry(94));
 		System.out.println("94점포함 뒤점수:"+scores.ceilingEntry(94));
+		
 	}
 }

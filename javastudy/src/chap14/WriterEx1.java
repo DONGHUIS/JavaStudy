@@ -17,8 +17,8 @@ public class WriterEx1 {
 		out.write('2');
 		out.write('3');
 		out.write('a');
-		out.write('b');
-		out.write('c');
+		out.write('v');
+		out.write('d');
 		out.write('가');
 		out.write('나');
 		out.write('다');

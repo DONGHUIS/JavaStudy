@@ -23,21 +23,21 @@ public class IteratorEx1 {
 		Iterator<Integer> it = null;
 		List<Integer> list = new ArrayList<Integer>();
 		Set<Integer> set = new HashSet<Integer>();
-		for(int i=1;i<=5;i++) {
-			list.add(i+10); //[11,12,13,14,15]
-			set.add(i*10); //[10,20,30,40,50]
+		for(int i=1;i<=5; i++) {
+			list.add(i+10);
+			set.add(i*10);
 		}
-		it=list.iterator(); //Iterator객체 <- List객체
+		it=list.iterator();
 		print(it);
-		it=set.iterator(); //Iterator갹채 <- Set객체
+		it=set.iterator();
 		print(it);
-		System.out.println("print() 이후의 list:"+list);
-		System.out.println("print() 이후의 set:"+set);
+		System.out.println(list);
+		System.out.println(set);
 	}
 	private static void print(Iterator<Integer>it) {
 		while(it.hasNext()) {
 			System.out.println(it.next());
-			it.remove();//한개의 요소 제거. it.next()이후에 호출되어야함.
+			it.remove();
 		}
 	}
 }

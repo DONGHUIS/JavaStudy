@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 
 /*
@@ -109,33 +110,44 @@ public class Test1 {
 	public static void main(String[] args) {
 		SutdaDeck deck = new SutdaDeck();
 		deck.shuffle();
-	
-		
-		System.out.println("게임할 인원수를 입력하세요(최대:10)");
+		List<Player> list = new ArrayList<>();
 		Scanner scan = new Scanner(System.in);
+		
 		while(true) {
-			int input = scan.nextInt();
-			List<Player> list = new ArrayList<>();
-			list.add(new Player(input+"번",deck.pick(0),deck.pick(0)));
-			input--;
-			if(input>10) {
-				System.err.println("게임 참가 최대인원수는 10명입니다.다시입력해주세요.");
-			}
-			if(input == 0) {
-				break;
-			}
-			
-			
-			
-			
-			Collections.sort(list,(s1,s2)->s2.getScore()-s1.getScore());
-			for(Player s : list) {
-				System.out.println(s);
-			}
-			if(list.get(0).getScore()==list.get(1).getScore()) {
-				System.out.println(list.get(0).input+","+list.get(1).input+" =>비김");
-			}else {
-				System.out.println(list.get(0).input +" => 승리");
+			try {
+				System.out.println("게임할 인원수를 입력하세요(최대:10)");
+				int input = scan.nextInt();
+				if(input>10) {
+					System.err.println("게임 참가 최대인원수는 10명입니다.다시입력해주세요.");
+					continue;
+				}
+				
+				
+                for(int i = 1; i <= input; i++) {
+                    list.add
+                    	(new Player(i + "번", deck.pick(0), deck.pick(0)));
+                }
+                //점수값의 내림차순으로 정렬
+                Collections.sort(list,(s1,s2)->s2.getScore()-s1.getScore());
+                for (int i = 0; i < list.size(); i++) {
+                    Player player = list.get(i);
+                    System.out.println((i + 1) + "등: " + player);                    	                    	
+                }
+                
+                /**
+                 * 동점자 등수 만들기 !!!!!!!!!!
+                 */
+                 
+                
+				if(list.get(0).getScore()==list.get(1).getScore()) {
+					System.out.println(list.get(0).input+","+list.get(1).input+" =>비김");
+				}else {
+					System.out.println(list.get(0).input +" => 승리");
+					System.out.println("게임종료");
+					break;
+				}
+			} catch (Exception e) {
+				scan.next();
 			}
 		
 				
