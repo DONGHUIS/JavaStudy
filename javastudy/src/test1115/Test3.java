@@ -1,4 +1,9 @@
 package test1115;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /*
 2. 
  bin/chap14/InputStreamEx1.class 파일은 이진 파일이다. 
@@ -13,7 +18,16 @@ CA FE BA BE 00 00 00 34 00 8E 07 00 02 01 00 17
 6F 64 65 0A 00 03 00 09 0C 00 05 00 06 01 00 0F 
 .... */
 public class Test3 {
-	public static void main(String[] args) {
-		
+	public static void main(String[] args) throws IOException {
+		FileInputStream fis = new FileInputStream("apple.gif");
+		byte[] buf = new byte[16];
+		int len;
+		while((len=fis.read(buf))!= -1) {
+			for(int i=0;i<len; i++) {
+				//%02X => 정수값을 16빈자리 0 으로 채워 2자리 대문자 형태로 출력.
+				System.out.printf(" %02X",buf[i]);
+			}
+			System.out.println();
+		}
 	}
 }
