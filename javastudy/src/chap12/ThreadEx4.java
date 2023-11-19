@@ -1,18 +1,16 @@
 package chap12;
 
+import java.util.Arrays;
 import java.util.List;
 
-/*
- * 동기화 되지 않은 경우
- */
 class PrintThread extends Thread{
 	char ch;
 	PrintThread(char ch){
-		this.ch=ch;
+		this.ch = ch;
 	}
 	@Override
 	public void run() {
-		for(int i=0; i<20; i++) {
+		for(int i=0;i<20;i++) {
 			for(int j=0;j<80;j++) {
 				System.out.print(ch);
 			}
@@ -21,13 +19,12 @@ class PrintThread extends Thread{
 	}
 }
 public class ThreadEx4 {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		List<PrintThread> list = Arrays.asList(new PrintThread('A'),new PrintThread('B'), new PrintThread('C'));
 		
-		PrintThread t1 = new PrintThread('A');
-		PrintThread t2 = new PrintThread('B');
-		PrintThread t3 = new PrintThread('C');
-		t1.start();
-		t2.start();
-		t3.start();
-	}
+		for(PrintThread p :list) {
+			p.start();
+			
+		}
+	}	
 }

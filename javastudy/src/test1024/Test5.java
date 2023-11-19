@@ -25,5 +25,6 @@ public class Test5 {
 		
 		System.out.println("넓이="+hap);
 		
+		
 	}
 }

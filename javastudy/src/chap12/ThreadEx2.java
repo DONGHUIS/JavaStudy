@@ -5,11 +5,10 @@ package chap12;
  *   new Thread(Runnable 객체) 
  *   run() 메서드 구현
  */
-class Runnable1 implements Runnable{ // => Thread 클래스 아님.
+class Runnable1 implements Runnable{
 	@Override
 	public void run() {
 		for(int i=1;i<=5;i++) {
-			//Thread.currentThread() : 현재 실행중인 스레드 객체 리턴
 			System.out.println(i+"="+Thread.currentThread().getName());
 			try {
 				Thread.sleep(1000);
@@ -22,12 +21,10 @@ class Runnable1 implements Runnable{ // => Thread 클래스 아님.
 public class ThreadEx2 {
 	public static void main(String[] args) { // 스레드
 		System.out.println(Thread.currentThread().getName()+"스레드 시작");
-		Runnable r = new Runnable1(); // Runnable 객체 생성
-		//t1 스레드가 Running시  r객체의 run 메서드를 실행.
-		Thread t1 = new Thread(r,"First"); // New 상태.
-		//t2 스레드가 Running시  r객체의 run 메서드를 실행.
-		Thread t2 = new Thread(r,"Second"); //New 상태.
-		t1.start(); t2.start(); //병렬화, r.run() 호출
+		Runnable r = new Runnable1();
+		Thread t1 = new Thread(r,"First");
+		Thread t2 = new Thread(r,"Second");
+		t1.start();t2.start();
 		System.out.println(Thread.currentThread().getName()+"스레드 종료");
 	}
 }
