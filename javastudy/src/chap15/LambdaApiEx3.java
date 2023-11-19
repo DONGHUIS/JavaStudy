@@ -19,75 +19,79 @@ class Student{
 	private int eng;
 	private int math;
 	private String major;
-	public Student(String name ,int eng,int math,String major) {
+	
+	public Student(String name, int eng, int math, String major) {
 		super();
-		this.name=name;
-		this.eng=eng;
-		this.math=math;
-		this.major=major;
+		this.name = name;
+		this.eng = eng;
+		this.math = math;
+		this.major = major;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public int getEng() {
 		return eng;
 	}
+
 	public int getMath() {
 		return math;
 	}
+
 	public String getMajor() {
 		return major;
 	}
+	
 	@Override
 	public String toString() {
-		return "[ name ="+ name + ",eng="+ eng + ",math="+ math +",major="+  major +"]";
+		return "("+name + "," + eng + "," + math + "," + major + ")";
 	}
-
-	
-	
 }
 
+
 public class LambdaApiEx3 {
-	static List<Student> list = Arrays.asList(new Student("홍길동",90,80,"경영"),
-			new Student("김삿갓",95,70,"컴공"),new Student("이몽룡",85,75,"경영"));
+	static List<Student> list =Arrays.asList(
+			new Student("김삿갓",90,96,"컴공"),
+			new Student("홍길동",23,55,"경영"),
+			new Student("이몽룡",65,80,"경영"));
 	public static void main(String[] args) {
-		System.out.println("학생의 이름===");
-		for(Student s : list) {
-			System.out.print(s.getName()+",");
-		}System.out.println();
-		System.out.println("학생의 이름:===");
-		//printString(t->t.getName());
+		System.out.println("//for문으로 조회한 학생의 이름");
+		for(Student s : list)System.out.print(s.getName()+",");
+		System.out.println();
+		
+		System.out.println("//printString으로 조회한 학생의 이름===");
 		printString(Student::getName);
-		System.out.println("수학 점수 ===");
-		printString(t->t.getMath()+"");
-		System.out.println("영어 점수 ===");
-		printString(t->t.getEng()+"");
-		System.out.println("전공 이름 ===");
+		
+		System.out.println("//for문으로 조회한 과목명");
+//		for(Student s : list)System.out.print(s.getMajor()+",");
 		printString(t->t.getMajor());
-		System.out.println("학생이름(영어 점수) ===");
-		printString(t->t.getName()+"("+t.getEng()+")");
-		System.out.println("학생이름(수학 점수) ===");
-		printString(t->t.getName()+"("+t.getMath()+")");
-		//학생들의 영어점수 합계
-		System.out.println("영어 점수 합계 ===");
-		printTot(t -> t.getEng());
-		//학생들의 수학점수 합계
-		System.out.println("수학 점수 합계 ===");
-		printTot(t -> t.getMath());
-		//학생들의 전체점수 합계
-		System.out.println("전체 점수 합계 ===");
-		printTot(t->t.getEng()+t.getMath());
+		
+		System.out.println("영어점수 조회");
+		printString(t->t.getEng()+"");
+		
+		System.out.println("수학점수 조회");
+		printString(t->t.getMath()+"");
+		
+		System.out.println("수학점수 합계");
+		printTot(t->t.getMath());
+		
+		System.out.println("영어점수 합계");
+		printTot(t->t.getEng());
+		
+		System.out.println("점수합계");
+		printTot(t-> t.getEng()+t.getMath());
 	}
+	
 	private static void printTot(ToIntFunction<Student> f) {
-		int sum=0;
-		for(Student s : list) sum+=f.applyAsInt(s);
-			System.out.println(sum);
+		int sum =0 ;
+		for(Student s : list) sum +=f.applyAsInt(s);
+		System.out.println(sum);
 	}
-	//Function<Student,String> : String apply(Student)
+	
 	private static void printString(Function<Student,String>f) {
-		// f: t->t.getName() : f.apply(s)
-		for(Student s: list) {
-			System.out.print(f.apply(s)+",");
-		}System.out.println();
+		for(Student s:list)System.out.print(f.apply(s)+",");
+		System.out.println();
 	}
 }

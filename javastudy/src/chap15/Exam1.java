@@ -25,48 +25,43 @@ class Person{
 	}
 	@Override
 	public String toString() {
-		return "name" + "," + age ;
+		return  name +","+age ;
 	}
-	public String getName() {
-		return name;
-	}
-	public int getAge() {
-		return age;
-	}
-	
 }
 
 public class Exam1 {
-	static List<Person> list = Arrays.asList(new Person("홍길동",10),new Person("김삿갓",30),new Person("이몽룡",15),new Person("김자바",25),new Person("박자바",20));
+	static List<Person> list = Arrays.asList(new Person("홍길동",10),
+											 new Person("김삿갓",20),
+											 new Person("이미자",30));
 	public static void main(String[] args) {
-		System.out.print("이름 목록:");
-		printString(t->t.getName());
-		System.out.print("나이 목록:");
-		printInt(t->t.getAge());
-		System.out.print("총나이합산:");
-		printTot(t->t.getAge());
-		System.out.print("나이 평균:");
-		printAvg(t->t.getAge());
+			System.out.print("이름목록:");
+			printString(t->t.name);
+			System.out.print("나이목록:");
+			printInt(t->t.age);
+			System.out.print("총 나이합산:");
+			printTot(t->t.age);
+			System.out.print("나이 평균:");
+			printAvg(t->t.age);
 	}
-	private static void printString(Function<Person,String>f) {
-		for(Person p :list)System.out.print(f.apply(p)+",");
+	
+	static void printString(Function<Person,String> f) {
+		for(Person p : list)System.out.print(f.apply(p)+",");
 		System.out.println();
 	}
 	
-	private static void printInt(ToIntFunction<Person>f) {
-		for(Person p :list)System.out.print(f.applyAsInt(p)+",");
+	static void printInt(ToIntFunction<Person>f) {
+		for(Person p : list)System.out.print(f.applyAsInt(p)+",");
 		System.out.println();
 	}
 	
-	private static void printTot(ToIntFunction<Person>f) {
+	static void printTot(ToIntFunction<Person>f) {
 		int sum=0;
 		for(Person p : list)sum+=f.applyAsInt(p);
 		System.out.println(sum);
 	}
-	
-	private static void printAvg(ToDoubleFunction<Person>f) {
-		int sum=0;
-		for(Person p : list)sum+=f.applyAsDouble(p); //나이데이터 double 리턴.
-			System.out.println(sum/list.size());
+	static void printAvg(ToDoubleFunction<Person>f) {
+		double sum = 0;
+		for(Person p:list)sum+=f.applyAsDouble(p);
+		System.out.println(sum/list.size());
 	}
 }

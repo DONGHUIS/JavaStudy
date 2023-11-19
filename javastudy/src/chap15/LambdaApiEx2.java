@@ -10,21 +10,17 @@ import java.util.function.Supplier;
  */
 public class LambdaApiEx2 {
 	public static void main(String[] args) {
-		Supplier<String> s1 = () -> "java";
+		Supplier<String> s1 = ()->"Java";
 		System.out.println(s1.get());
-		//IntSupplier : 정수값을 리턴
-		//IntSupplier를 이용하여 임의의 주사위값을 리턴.
-		IntSupplier j1 =() ->(int)(Math.random()*6)+1;
-		System.out.println(j1.getAsInt());
-		
-		IntSupplier s2 = () -> {
-			int sum=0;
-			for(int i=1; i<=100; i++) {
-				sum += i;
-			}
-			return  sum;
+		IntSupplier s2 =  () -> {
+			return (int)(Math.random()*6)+1;
 		};
 		System.out.println(s2.getAsInt());
-			
+		s2= ()->{
+			int sum = 0;
+			for(int i=1;i<=100;i++)sum+=i;
+			return sum;
+		};
+		System.out.println(s2.getAsInt());
 	}
 }

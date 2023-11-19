@@ -18,15 +18,21 @@ public class LambdaApiEx5 {
 			  new Student("성춘향",45,77,"컴공")); 
 	public static void main(String[] args) {
 		System.out.println("영어점수 80이상인 학생의 영어평균:"+
-					avgEng(t->t.getEng()>80));
+					avgEng(t -> t.getEng()>=80));
 		System.out.println("컴공과 학생의 영어평균:"+
-				avgEng(t->t.getMajor().equals("컴공")));
+					avgEng(t -> t.getMajor().equals("컴공")));
 		System.out.println("컴공과 아닌 학생의 영어평균:"+
-				avgEng(t->!t.getMajor().equals("컴공")));
+					avgEng(t->!t.getMajor().equals("컴공")));
 		System.out.println("컴공과 학생의 이름:"+
-				nameList(t->t.getMajor().equals("컴공")));
+					nameList(t->t.getMajor().equals("컴공")));
 		System.out.println("컴공과 아닌 학생의 이름:"+
-				nameList(t->!t.getMajor().equals("컴공")));
+					nameList(t->!t.getMajor().equals("컴공")));
+		System.out.println("수학점수 70이상인 학생의 수학평균:"+
+					avgMath(t->t.getMath()>=70));
+		System.out.println("컴공과 학생의 수학 평균:"+
+				avgMath(t->t.getMajor().equals("컴공")));
+		System.out.println("컴공과 아닌 학생의 수학평균:"+
+				avgMath(t->!t.getMajor().equals("컴공")));
 	}
 	private static String nameList(Predicate<Student>p) {
 		String result = "";
@@ -45,5 +51,15 @@ public class LambdaApiEx5 {
 		}
 		
 		return (double)sum/cnt;
+	}
+	private static double avgMath(Predicate<Student>p) {
+		int sum =0,cnt=0;
+		for(Student s : list) {
+			if(p.test(s)) {
+				sum+=s.getMath();
+				cnt++;
+			}
+		}
+		return(double)sum/cnt;
 	}
 }

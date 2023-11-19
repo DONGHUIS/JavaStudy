@@ -12,64 +12,66 @@ import java.util.function.IntBinaryOperator;
  * 매개변수,리턴값존재 => 매개변수형과 리턴자료형이 같다.
  */
 public class LambdaApiEx4 {
-	private static List<Student> list = Arrays.asList(new Student("홍길동",90,80,"경영"),
-			  new Student("김길동",100,90,"컴공"),
-			  new Student("박길동",83,44,"경영")); 
+	private static List<Student> list = Arrays.asList(
+			new Student("홍길동",90,80,"경영"),
+			new Student("김삿갓",95,70,"컴공"),
+			new Student("이몽룡",85,75,"경영")	);
 	public static void main(String[] args) {
-		System.out.println("최대 수학 점수");
-		System.out.println(MaxOrMinMath((a,b)->(a>=b)?a:b));
-		System.out.println("최소 수학 점수");
-		System.out.println(MaxOrMinMath((a,b)->(a<=b)?a:b));
-		System.out.println("최대 영어 점수");
-		System.out.println(MaxOrMinEng((a,b)->(a>=b)?a:b));
-		System.out.println("최소 영어 점수");
-		System.out.println(MaxOrMinEng((a,b)->(a<=b)?a:b));
-		System.out.println("최대 평균 점수");
-		System.out.println(MaxOrMinAvg((a,b)->(a>=b)?a:b));
-		System.out.println("최소 평균 점수");
-		System.out.println(MaxOrMinAvg((a,b)->(a<=b)?a:b));
-		System.out.println("영어 최고점 학생 => " +maxOrmin((a,b)->a.getEng() >= b.getEng()?a:b));
-		System.out.println("영어 최저점 학생 => " +maxOrmin((a,b)->a.getEng() <= b.getEng()?a:b));
-		System.out.println("수학 최고점 학생 => " +maxOrmin((a,b)->a.getMath() >= b.getMath()?a:b));
-		System.out.println("수학 최저점 학생 => " +maxOrmin((a,b)->a.getMath() <= b.getMath()?a:b));
-		System.out.println("총점 최고점 학생 => " + 
-						maxOrmin((a,b)-> {
-							int suma = a.getEng() + a.getMath();
-							int sumb = b.getEng() + b.getMath();
-							return (suma>=sumb)?a:b;
-						}));
-		System.out.println("총점 최저점 학생 => " +
-				maxOrmin((a,b)-> {
-					int suma = a.getEng() + a.getMath();
-					int sumb = b.getEng() + b.getMath();
-					return (suma<=sumb)?a:b;
-				}));
+		System.out.println("최대 수학점수");
+		System.out.println(maxOrMinMath((a,b)->(a>=b)?a:b)); //80
+		System.out.println("최소 수학점수");
+		System.out.println(maxOrMinMath((a,b)->(a<=b)?a:b));
+		System.out.println("최대 영어점수");
+		System.out.println(maxOrMinEng((a,b)->(a>=b)?a:b)); 
+		System.out.println("최소 영어점수");
+		System.out.println(maxOrMinEng((a,b)->(a<=b)?a:b));
+		System.out.println("최대 평균점수");
+		System.out.println(maxOrMinAvg((a,b)->(a>=b)?a:b)); 
+		System.out.println("최소 평균점수");
+		System.out.println(maxOrMinAvg((a,b)->(a<=b)?a:b));
+		System.out.println("영어 최고점 학생=>" + 
+		    maxOrMin((a,b)->a.getEng() >=b.getEng()?a:b));
+		System.out.println("영어 최저점 학생=>" + 
+			    maxOrMin((a,b)->a.getEng() <=b.getEng()?a:b));
+		System.out.println("수학 최고점 학생=>" + 
+			    maxOrMin((a,b)->a.getMath() >=b.getMath()?a:b));
+		System.out.println("수학 최저점 학생=>" + 
+			    maxOrMin((a,b)->a.getMath() <=b.getMath()?a:b));
+		System.out.println("총점 최고점 학생=>" + 
+			    maxOrMin((a,b)->{
+			    	int suma = a.getEng() + a.getMath();
+			    	int sumb = b.getEng() + b.getMath();
+			    	return (suma >= sumb)?a:b;
+			    }));
+		System.out.println("총점 최저점 학생=>" + 
+			    maxOrMin((a,b)->{
+			    	int suma = a.getEng() + a.getMath();
+			    	int sumb = b.getEng() + b.getMath();
+			    	return (suma <= sumb)?a:b;
+			    }));
 	}
-	//IntBinaryOperator => int applyasInt(int int)
-	private static int MaxOrMinMath(IntBinaryOperator op) {
-		int result=list.get(0).getMath();		
-		for(Student s:list)result=op.applyAsInt(result, s.getMath());
+	private static Student maxOrMin(BinaryOperator<Student> op) {
+		Student result = list.get(0);
+		for(Student s : list) result = op.apply(result, s);
 		return result;
 	}
-	
-	private static int MaxOrMinEng(IntBinaryOperator op) {
-		int engresult=list.get(1).getEng();
-		for(Student s:list)engresult=op.applyAsInt(engresult, s.getEng());
-		return engresult;
-	}
-	
-	private static double MaxOrMinAvg(DoubleBinaryOperator op) {
-		double result = (list.get(0).getMath()+list.get(0).getMath())/2.0;
-		for(Student s:list) {
+	private static double maxOrMinAvg(DoubleBinaryOperator op) {
+		double result = (list.get(0).getMath() +list.get(0).getEng())/2.0;
+		for(Student s : list) {
 			double avg = (s.getMath()+s.getEng())/2.0;
-			result=op.applyAsDouble(result, avg);
+			result = op.applyAsDouble(result, avg);
 		}
 		return result;
 	}
-	
-	private static Student maxOrmin(BinaryOperator<Student> op) {
-		Student result = list.get(0);
-		for(Student s:list)result = op.apply(result, s);
+	//IntBinaryOperator : int applyasInt(int int)
+	private static int maxOrMinMath(IntBinaryOperator op) {
+		int result = list.get(0).getMath();
+		for(Student s : list) result = op.applyAsInt(result, s.getMath());
+		return result;
+	}
+	private static int maxOrMinEng(IntBinaryOperator op) {
+		int result = list.get(0).getEng();
+		for(Student s : list) result = op.applyAsInt(result, s.getEng());
 		return result;
 	}
 }
